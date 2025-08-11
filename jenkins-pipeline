@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('cloning') {
+            steps {
+                git 'https://github.com/JAGGU112223/task1.git'
+            }
+        }
+        stage('deploying') {
+            steps {
+sh ' rsync -a /var/lib/jenkins/workspace/task1 root@172.31.3.34:/root/'
+            }
+        }
+    }
+}
